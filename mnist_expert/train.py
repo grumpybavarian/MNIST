@@ -82,16 +82,3 @@ def train():
 
 if __name__ == '__main__':
     train()
-
-
-"""
-conv1 = tf.layers.conv2d(
-      inputs=input_layer,
-      filters=32,
-      kernel_size=[5, 5],
-      padding="same",
-      activation=tf.nn.relu)
-
-  # Pooling Layer #1
-  pool1 = tf.layers.max_pooling2d(inputs=conv1, pool_size=[2, 2], strides=2)
-  """
