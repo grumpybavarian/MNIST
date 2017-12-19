@@ -53,7 +53,7 @@ def train(num_conv_layers=2, num_dense_layers=2):
     keep_prob = tf.placeholder(tf.float32)
 
     for i in range(num_conv_layers):
-        network = conv_relu_pool(network, 64, 5, keep_prob)
+        network = conv_relu_pool(network, 64, keep_prob)
 
     network = tf.flatten(network)
 
@@ -68,7 +68,7 @@ def train(num_conv_layers=2, num_dense_layers=2):
     correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
-    with tf.Session() as sess:
+    with tf.Session(config=tf.ConfigProto(log_device_placement=True)) as sess:
         sess.run(tf.global_variables_initializer())
 
         for i in range(10000):
